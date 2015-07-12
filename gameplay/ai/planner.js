@@ -1,6 +1,6 @@
 var Planner = function() {
 
-}
+};
 
 Planner.prototype.plan = function(agent) {
     var root = new Node(null, 0, null);
@@ -33,8 +33,8 @@ Planner.prototype.plan = function(agent) {
     }
 
     return result;
-}
+};
 
 Planner.prototype._buildGraph = function(root) {
 
-}
+};

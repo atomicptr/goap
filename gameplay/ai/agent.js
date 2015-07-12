@@ -11,16 +11,16 @@ var Agent = function() {
     this.sm.add("action", new ActionState());
 
     this.sm.enter("idle");
-}
+};
 
 Agent.prototype.update = function() {
     this.sm.update();
-}
+};
 
 Agent.prototype.addAction = function(action) {
     this.actions.push(action);
-}
+};
 
 Agent.prototype.hasPlan = function() {
     return this.currentActions.length > 0;
-}
+};
