@@ -16,11 +16,3 @@ var Agent = function() {
 Agent.prototype.update = function() {
     this.sm.update();
 };
-
-Agent.prototype.addAction = function(action) {
-    this.actions.push(action);
-};
-
-Agent.prototype.hasPlan = function() {
-    return this.currentActions.length > 0;
-};
