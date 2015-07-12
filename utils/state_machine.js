@@ -6,11 +6,11 @@ var StateMachine = function() {
     this.current = null;
 };
 
-StateMachine.prototype.addState = function(name, state) {
+StateMachine.prototype.add = function(name, state) {
     this.states[name] = state;
 }
 
-StateMachine.prototype.enterState = function(name) {
+StateMachine.prototype.enter = function(name) {
     if(this.current) {
         this.current.leave();
     }
@@ -20,5 +20,7 @@ StateMachine.prototype.enterState = function(name) {
 }
 
 StateMachine.prototype.update = function() {
-    this.current.update();
+    if(this.current) {
+        this.current.update();
+    }
 }
