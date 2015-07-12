@@ -1,5 +1,6 @@
-var Node = function(parent, cost, action) {
+var Node = function(parent, action, cost, state) {
     this.parent = parent;
-    this.cost = cost;
     this.action = action;
+    this.cost = cost;
+    this.state = state;
 };

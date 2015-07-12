@@ -2,7 +2,7 @@ var Agent = function() {
     this.actions = [];
     this.currentActions = [];
 
-    this.planner = undefined;
+    this.state = {};
 
     this.sm = new StateMachine();
 
@@ -15,4 +15,25 @@ var Agent = function() {
 
 Agent.prototype.update = function() {
     this.sm.update();
+};
+
+Agent.prototype.addAction = function(action) {
+    action.agent = this;
+
+    this.actions.push(action);
+};
+
+Agent.prototype.setState = function(name, value) {
+    this.state[name] = value;
+};
+
+Agent.prototype.is = function(name, value) {
+    return this.state[name] == value;
+};
+
+Agent.prototype.getUsableActions = function() {
+    // get all actions with cleared preconditions
+    return this.actions.filter(function(action) {
+        return action.canExecute();
+    });
 };
