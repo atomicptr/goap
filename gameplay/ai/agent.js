@@ -1,4 +1,5 @@
-var Agent = function() {
+var Agent = function(name) {
+    this.name = name;
     this.actions = [];
     this.currentActions = [];
 
@@ -6,9 +7,9 @@ var Agent = function() {
 
     this.sm = new StateMachine();
 
-    this.sm.add("idle", new IdleState());
-    this.sm.add("moving", new MovingState());
-    this.sm.add("action", new ActionState());
+    this.sm.add("idle", new IdleState(this));
+    this.sm.add("moving", new MovingState(this));
+    this.sm.add("action", new ActionState(this));
 
     this.sm.enter("idle");
 };
@@ -22,6 +23,12 @@ Agent.prototype.addAction = function(action) {
 
     this.actions.push(action);
 };
+
+Agent.prototype.applyAction = function(action) {
+    for(var effect in action.effects) {
+        this.setState(effect, action.effects[effect]);
+    }
+}
 
 Agent.prototype.setState = function(name, value) {
     this.state[name] = value;

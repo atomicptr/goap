@@ -9,8 +9,6 @@ Planner.prototype.plan = function(agent, goal) {
 
     var found = this._buildGraph(root, leaves, agent.actions, goal);
 
-    console.log(leaves);
-
     var cheapest = leaves.sort(function(a, b) {
         return a.cost < b.cost;
     })[0];
@@ -26,6 +24,8 @@ Planner.prototype.plan = function(agent, goal) {
 
         node = node.parent;
     }
+
+    console.log(plan);
 
     return plan;
 };
@@ -63,7 +63,7 @@ Planner.prototype._buildGraph = function(parent, leaves, actions, goal) {
 Planner.prototype._inState = function(state, preconditions) {
     var clear = true;
     for(var cond in preconditions) {
-        clear = clear && state[cond] == preconditions[cond];
+        clear = clear && (state[cond] == preconditions[cond]);
     }
 
     return clear;

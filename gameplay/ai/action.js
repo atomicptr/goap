@@ -15,6 +15,6 @@ Action.prototype.addPrecondition = function(name, value) {
     this.preconditions[name] = value;
 };
 
-Action.prototype.isDone = function() {
-    throw "You need to override this one ;)";
+Action.prototype.execute = function() {
+    console.warn(this.name + ": You might want to override execute for me :P");
 };

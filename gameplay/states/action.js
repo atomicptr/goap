@@ -1,11 +1,37 @@
-var ActionState = function() {
+var ActionState = function(entity) {
+    this._entity = entity;
+    this._waiting = false;
 };
 
 ActionState.prototype.enter = function() {
+    console.log(this._entity.name + " enters Action state");
 };
 
 ActionState.prototype.leave = function() {
+    console.log(this._entity.name + " leaves Action state");
 };
 
 ActionState.prototype.update = function() {
+    var action = this._waiting ? null : this._entity._current_plan.shift();
+
+    if(action) {
+        this._waiting = true;
+
+        var cost = action.cost;
+        var that = this;
+
+        // wait, apply and move to the next one (if there is one)
+        setTimeout(function() {
+            action.execute(); // execute action, might break tools or something like this
+            that._entity.applyAction(action);
+
+            that._waiting = false;
+
+            if(that._entity._current_plan.length > 0) {
+                that._entity.sm.enter("moving");
+            } else {
+                that._entity.sm.enter("idle");
+            }
+        }, 500 * cost); // 1 cost = 0.5s
+    }
 };
