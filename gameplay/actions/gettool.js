@@ -8,3 +8,11 @@ GetToolAction = function() {
 }
 
 GetToolAction.prototype = Object.create(Action.prototype);
+
+GetToolAction.prototype.canExecute = function() {
+    return ToolsDeposit.PickAxe > 0;
+}
+
+GetToolAction.prototype.execute = function() {
+    ToolsDeposit.PickAxe--;
+}

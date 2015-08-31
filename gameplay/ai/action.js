@@ -18,3 +18,7 @@ Action.prototype.addPrecondition = function(name, value) {
 Action.prototype.execute = function() {
     console.warn(this.name + ": You might want to override execute for me :P");
 };
+
+Action.prototype.canExecute = function() {
+    return true;
+}

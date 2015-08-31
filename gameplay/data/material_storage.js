@@ -1,3 +1,3 @@
 var MaterialStorage = {
-    Ore: 0
+    Ore: 1
 };

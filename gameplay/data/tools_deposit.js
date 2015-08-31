@@ -1,0 +1,3 @@
+ToolsDeposit = {
+    PickAxe: 0
+};
