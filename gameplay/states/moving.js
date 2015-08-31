@@ -22,8 +22,6 @@ MovingState.prototype.update = function() {
 
         var dist = Phaser.Math.distance(p.x, p.y, t.x, t.y);
 
-        console.log(dist);
-
         if(dist <= 10) {
             this._entity._sprite.body.moves = false;
             this._entity._target = null;

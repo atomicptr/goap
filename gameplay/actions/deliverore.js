@@ -8,3 +8,7 @@ DeliverOreAction = function() {
 }
 
 DeliverOreAction.prototype = Object.create(Action.prototype);
+
+DeliverOreAction.prototype.execute = function() {
+    MaterialStorage.Ore++;
+}
